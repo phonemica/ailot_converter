@@ -1,10 +1,19 @@
-
 const fs = require('fs');
 const path = require('path');
 const thisPath = console.log(path.dirname(__filename));
 
 const clear = require('clear');
 const chalk = require('chalk');
+
+var progress = require('cli-progress');
+var progressBar = new progress.Bar({
+	barCompleteChar: '█',
+	barIncompleteChar: ' ',
+	fps: 5,
+	stream: process.stdout,
+	barsize: 65,
+	format: chalk.green.bold('Progress: ') + '[{bar}] {percentage}%'
+});
 
 const timestamp = require('unix-timestamp');
 
@@ -17,33 +26,29 @@ clear();
 const sourceData = fs.readFileSync(sourceFile).toString().split("\n");
 var tempEntry = {};
 
-// names as they appear in ToolBox
-var fieldCodes = ["lx","ph","sn","ps","ge","de","notes","xv","xr","xe","dt"]
-var fieldNames = ["lexeme","phonemic","sense","pos","gloss.english","definition.english","notes","example.script","example.phonemic","example.english","date"]
-// ^ names as they need to be in AilotDict
+// These will both get redone shortly
+var fieldCodes = ["lx", "ph", "sn", "ps", "ge", "de", "notes", "xv", "xr", "xe", "dt"]
+var fieldNames = ["lexeme", "phonemic", "sense", "pos", "gloss.english", "definition.english", "notes", "example.script", "example.phonemic", "example.english", "date"]
 
 console.log(chalk.green.bold('Ailot Dictionary Converter'));
 console.log(chalk.green('(c)2016 Phonemica'));
 console.log("");
 findSource(sourceFile);
 
-function createArrays(limit=30) {
-	console.log("creating arrays…");
+function createArrays(limit) {
+	progressBar.start(limit, 0);
 	var fieldSets = null,
 		parentField = null,
 		childField = null;
 	for (i in sourceData) {
+		progressBar.update(i);
 		if (i < limit) {
 			if (sourceData[i].substring(0, 2) == "\\_" && i < 5) {
 				// ignore the header
 			} else if (sourceData[i].trim() == '') {
 				// print the entry if it's not empty
 				if (Object.keys(tempEntry).length != 0 && tempEntry.constructor === Object) {
-					console.log("");
-					//console.log(JSON.stringify(tempEntry));
 					fullArray.push(tempEntry);
-					console.log(chalk.green.bold('Output:'));
-					console.log(JSON.stringify(fullArray));
 				}
 				tempEntry = {}; // start a new entry array
 			} else {
@@ -72,7 +77,6 @@ function createArrays(limit=30) {
 							parentField = null,
 							childField = null;
 							if ("\\"+field != fieldValue) {
-								// dates are special
 								if (fieldName == 'date') {
 									tempEntry[fieldName] = {};
 									tempEntry[fieldName]["date"] = fieldValue;
@@ -89,13 +93,31 @@ function createArrays(limit=30) {
 			}
 		}
 	}
+	progressBar.stop();
 	console.log("");
-	console.log(chalk.green.bold('Done'));
-	console.log("");
+	console.log(chalk.green.bold('Sample output:'));
+	console.log(JSON.stringify(fullArray[0]));
+	saveJSON(fullArray);
 }
 
+function saveJSON(fullArray) {
+	console.log("");
+	console.log(chalk.green.bold('Saving file…'));
+	var saveData = JSON.stringify(fullArray,null,4);
+	fs.writeFile("./dictionary.json", saveData, function(err) {
+		if (err) {
+			console.log(chalk.red.bold('Error: ' + err));
+		} else {
+			console.log(chalk.green.bold('File saved'));
+			console.log(chalk.yellow.bold('Done!'));
+			console.log("");
+		}
+	});
+}
 function getFields(limit) {
 	console.log(chalk.bold("getting fields…"));
+	console.log(sourceData.length + " lines found…");
+	limit = sourceData.length;
 	console.log("");
 	var fieldList = [];
 	for (i in sourceData) {
@@ -113,8 +135,7 @@ function getFields(limit) {
 			}
 		}
 	}
-	console.log(JSON.stringify(fieldList));
-	createArrays();
+	createArrays(limit);
 }
 
 function findSource(sourceFile) {
@@ -125,7 +146,7 @@ function findSource(sourceFile) {
 			console.log(chalk.red.bold('This is not good.'));
 		} else {
 			console.log(chalk.bold('source data: ') + chalk.green(sourceFile));
-			getFields(200);
+			getFields(3000);
 		}
 	});
 }
