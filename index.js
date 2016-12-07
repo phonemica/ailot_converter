@@ -1,10 +1,13 @@
+#! /usr/bin/env node
+
+console.log();
+
 const fs = require('fs');
 const path = require('path');
 const thisPath = console.log(path.dirname(__filename));
-
 const clear = require('clear');
 const chalk = require('chalk');
-
+const timestamp = require('unix-timestamp');
 var progress = require('cli-progress');
 var progressBar = new progress.Bar({
 	barCompleteChar: '█',
@@ -15,20 +18,17 @@ var progressBar = new progress.Bar({
 	format: chalk.green.bold('Progress: ') + '[{bar}] {percentage}%'
 });
 
-const timestamp = require('unix-timestamp');
-
+/* Load the Toolbox file */
 const sourceFile = './source.txt';
+const sourceData = fs.readFileSync(sourceFile).toString().split("\n");
 
 var fullArray = [];
 
-clear();
+//clear();
 
-const sourceData = fs.readFileSync(sourceFile).toString().split("\n");
+
 var tempEntry = {};
-
-// These will both get redone shortly
-var fieldCodes = ["lx", "ph", "sn", "ps", "ge", "de", "notes", "xv", "xr", "xe", "dt"]
-var fieldNames = ["lexeme", "phonemic", "sense", "pos", "gloss.english", "definition.english", "notes", "example.script", "example.phonemic", "example.english", "date"]
+var fieldData = require('./fields');
 
 console.log(chalk.green.bold('Ailot Dictionary Converter'));
 console.log(chalk.green('(c)2016 Phonemica'));
@@ -55,9 +55,8 @@ function createArrays(limit) {
 				var e = sourceData[i].indexOf(' ');
 				var arrays = [sourceData[i].slice(0,e), sourceData[i].slice(e+1)];
 				var field = arrays[0].replace(/\\/g,"").replace(/\r/g,"");
-				var fieldIndex = fieldCodes.indexOf(field);
-				if (fieldIndex > -1) {
-					var fieldName = fieldNames[fieldIndex];
+				if (field in fieldData) {
+					var fieldName = fieldData[field];
 					if (fieldName) {
 						var fieldValue = arrays[1].replace(/\r/g,"");
 						if (fieldName.indexOf('.') !== -1) {
@@ -114,6 +113,7 @@ function saveJSON(fullArray) {
 		}
 	});
 }
+
 function getFields(limit) {
 	console.log(chalk.bold("getting fields…"));
 	console.log(sourceData.length + " lines found…");
