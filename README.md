@@ -4,4 +4,4 @@ A command-line application to convert [Toolbox](http://www-01.sil.org/computing/
 
 ## Screenshot
 
-![](http://phonemica.net/github/ailot_converter.png)
+![](http://phonemica.net/github/ailot_screen.png)
