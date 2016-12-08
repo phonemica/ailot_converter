@@ -14,5 +14,6 @@ module.exports = {
 	xv: "example.script",
 	xr: "example.phonemic",
 	xe: "example.english",
-	dt: "date"
+	dt: "date",
+	so: "sound"
 }
