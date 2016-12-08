@@ -24,8 +24,7 @@ const sourceData = fs.readFileSync(sourceFile).toString().split("\n");
 
 var fullArray = [];
 
-//clear();
-
+clear();
 
 var tempEntry = {};
 var fieldData = require('./fields');
@@ -46,19 +45,22 @@ function createArrays(limit) {
 			if (sourceData[i].substring(0, 2) == "\\_" && i < 5) {
 				// ignore the header
 			} else if (sourceData[i].trim() == '') {
-				// print the entry if it's not empty
-				if (Object.keys(tempEntry).length != 0 && tempEntry.constructor === Object) {
-					fullArray.push(tempEntry);
-				}
-				tempEntry = {}; // start a new entry array
-			} else {
+				// ignore blank lines
+			} else { // ignore blank lines
 				var e = sourceData[i].indexOf(' ');
-				var arrays = [sourceData[i].slice(0,e), sourceData[i].slice(e+1)];
-				var field = arrays[0].replace(/\\/g,"").replace(/\r/g,"");
+				var arrays = [sourceData[i].slice(0, e), sourceData[i].slice(e + 1)];
+				var field = arrays[0].replace(/\\/g, "").replace(/\r/g, "");
+				if (field == "lx" || field == "se") {
+					//console.log(tempEntry);
+					if (Object.keys(tempEntry).length != 0 && tempEntry.constructor === Object) {
+						fullArray.push(tempEntry);
+					}
+					tempEntry = {}; // start a new entry array
+				}
 				if (field in fieldData) {
 					var fieldName = fieldData[field];
 					if (fieldName) {
-						var fieldValue = arrays[1].replace(/\r/g,"");
+						var fieldValue = arrays[1].replace(/\r/g, "");
 						if (fieldName.indexOf('.') !== -1) {
 							fieldSets = fieldName.split(".");
 							parentField = fieldSets[0];
@@ -66,20 +68,23 @@ function createArrays(limit) {
 							if (typeof tempEntry[parentField] !== 'object' && tempEntry[parentField] !== null) {
 								tempEntry[parentField] = {};
 							}
-							if ("\\"+field != fieldValue) {
+							if ("\\" + field != fieldValue) {
 								tempEntry[parentField][childField] = fieldValue;
 							} else {
 								tempEntry[parentField][childField] = "";
 							}
 						} else {
 							fieldSets = null,
-							parentField = null,
-							childField = null;
-							if ("\\"+field != fieldValue) {
+								parentField = null,
+								childField = null;
+							if ("\\" + field != fieldValue) {
 								if (fieldName == 'date') {
 									tempEntry[fieldName] = {};
 									tempEntry[fieldName]["date"] = fieldValue;
 									tempEntry[fieldName]["unix"] = timestamp.fromDate(fieldValue);
+								} else if (fieldName == 'se') {
+									// subentries get put as entries
+									tempEntry['lx'] = fieldValue;
 								} else {
 									tempEntry[fieldName] = fieldValue;
 								}
@@ -102,7 +107,7 @@ function createArrays(limit) {
 function saveJSON(fullArray) {
 	console.log("");
 	console.log(chalk.green.bold('Saving file…'));
-	var saveData = JSON.stringify(fullArray,null,4);
+	var saveData = JSON.stringify(fullArray, null, 2);
 	fs.writeFile("./dictionary.json", saveData, function(err) {
 		if (err) {
 			console.log(chalk.red.bold('Error: ' + err));
@@ -128,7 +133,7 @@ function getFields(limit) {
 				// ignore blanks
 			} else {
 				var arrays = sourceData[i].split(" ");
-				var field = arrays[0].replace(/\\/g,"").replace(/\r/g,"");
+				var field = arrays[0].replace(/\\/g, "").replace(/\r/g, "");
 				if (fieldList.indexOf(field) === -1) {
 					fieldList.push(field);
 				}
