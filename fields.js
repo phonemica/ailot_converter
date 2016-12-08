@@ -7,6 +7,7 @@ module.exports = {
 	lx: "lexeme",
 	ph: "phonemic",
 	sn: "sense",
+	se: "lexeme", // gets reassigned later
 	ps: "pos", // part of speech
 	ge: "gloss.english", // periods will separate later
 	de: "definition.english",
