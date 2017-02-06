@@ -8,4 +8,4 @@ Future versions of Metric will be able to handle other popular formats, most not
 
 ## Screenshot
 
-![](http://phonemica.net/github/ailot_convert.png)
+![](http://phonemica.net/github/0jpsf46f.png)
