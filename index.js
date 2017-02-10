@@ -1,6 +1,5 @@
 #! /usr/bin/env node
 
-// ADD SEARCHING
 console.log();
 const fs = require('fs');
 const path = require('path');
@@ -8,7 +7,9 @@ const thisPath = console.log(path.dirname(__filename));
 const clear = require('clear');
 const chalk = require('chalk');
 const timestamp = require('unix-timestamp');
+
 const language = 'Phake';
+
 var progress = require('cli-progress');
 var progressBar = new progress.Bar({
 	barCompleteChar: '█',
@@ -16,8 +17,9 @@ var progressBar = new progress.Bar({
 	fps: 5,
 	stream: process.stdout,
 	barsize: 65,
-	format: chalk.green.bold('Progress: ') + '[{bar}] {percentage}%'
+	format: chalk.green.bold('Progress: ') + '{bar} {percentage}%'
 });
+
 /* Load the Toolbox file */
 const sourceFile = './source.txt';
 const sourceData = fs.readFileSync(sourceFile).toString().split("\n");
@@ -51,20 +53,20 @@ function createArrays(limit) {
 				// ignore the header
 			} else if (sourceData[i].trim() == '') {
 				// ignore blank lines
-			} else { // ignore blank lines
+			} else {
 				var e = sourceData[i].indexOf(' ');
 				var arrays = [sourceData[i].slice(0, e), sourceData[i].slice(e + 1)];
 				var field = arrays[0].replace(/\\/g, "").replace(/\r/g, "");
 				if (field == "lx" || field == "se") {
-					//console.log(arrays);
 					if (Object.keys(tempEntry).length != 0 && tempEntry.constructor === Object) {
+						// Doing this line by line instead of iterating so it doesn't mess up an array somewhere else
 						tempEntry['gloss'] = ksort(tempEntry['gloss']);
 						tempEntry['example'] = ksort(tempEntry['example']);
 						tempEntry['definition'] = ksort(tempEntry['definition']);
 						tempEntry['phonemic'] = ksort(tempEntry['phonemic']);
 						fullArray.push(ksort(tempEntry));
 					}
-					tempEntry = {}; // start a new entry array
+					tempEntry = {};
 					tempEntry['image'] = [];
 					tempEntry['gloss'] = {}
 					tempEntry['phonemic'] = {};
@@ -73,7 +75,6 @@ function createArrays(limit) {
 					var fieldName = fieldData[field];
 					if (fieldName) {
 						var fieldValue = arrays[1].replace(/\r/g, "");
-						//console.log(fieldValue);
 						if (fieldName.indexOf('.') !== -1) {
 							fieldSets = fieldName.split(".");
 							parentField = fieldSets[0];
