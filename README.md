@@ -6,6 +6,10 @@ The tool has been developed with Node.js since that is also a requirement for co
 
 Future versions of Metric will be able to handle other popular formats, most notably FLEx.
 
+## Screenshot
+
+![Metric on macOS](phonemica.net/github/metric.png)
+
 ## Formats
 
 With this tool and a few small changes, you can easily take this…
@@ -68,7 +72,3 @@ With this tool and a few small changes, you can easily take this…
 ```
 
 Through changes to `fields.js` you can make it work with any Toolbox field names you've previous set. It's a straightforward conversion script, and while it's small and unimpressive, it serves a much needed function.
-
-## Screenshot
-
-![](http://phonemica.net/github/0jpsf46f.png)
