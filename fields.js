@@ -1,13 +1,12 @@
 /*
 	These are the fields to be used from your Toolbox file. The two-letter
-	field names are what you can change. Do not change the quoted words.
-	Eventually this will be automated. Until then, it's here.
+	field names are what you can change. Do not change the quoted text.
 */
 module.exports = {
 	lx: "lexeme",
 	ph: "phonemic",
 	sn: "sense",
-	se: "lexeme", // gets reassigned later
+	se: "subentry", // gets reassigned later
 	ps: "pos", // part of speech
 	ge: "gloss.english", // periods will separate later
 	de: "definition.english",
@@ -16,5 +15,8 @@ module.exports = {
 	xr: "example.phonemic",
 	xe: "example.english",
 	dt: "date",
-	so: "sound"
+	so: "sound",
+	pc1: "image",
+	pc2: "image",
+	pc3: "image"
 }
