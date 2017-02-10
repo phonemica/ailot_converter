@@ -8,7 +8,7 @@ Future versions of Metric will be able to handle other popular formats, most not
 
 ## Screenshot
 
-![Metric on macOS](phonemica.net/github/metric.png)
+![Metric on macOS](http://phonemica.net/github/metric.png)
 
 ## Formats
 
