@@ -1,0 +1,289 @@
+\_sh v3.0  591  MDF 4.0
+\_DateStampHasFourDigitYear
+
+\lx cpq
+\le
+\ph cap1
+\hm 1
+\ps v
+\sn 1
+\de to adhere, join, stick firmly to
+\ge stick firmly to
+\pl
+\pd
+\pde
+\pdn
+\dn
+\rf
+\xv ecencpqka
+\xr cE3 nj4 cap1 kA1
+\xe the paper stick to each other
+\xn
+\sn 2
+\se cpq
+\le
+\ph cap1
+\ps v
+\de ( of birds ) perch, sit, rest as a bird on a tree
+\ge perch
+\pl
+\pd
+\pde
+\pdn
+\dn
+\rf
+\xv tInukqcpq
+\xr tI5 nok4 cap1
+\xe a perch, a branch, bar etc. on which birds rests or roosts
+\xv nukqtuwqnJgqcpqsUtIxamj
+\xr nok4 cap1 tI5 khA4 mai4
+\xe a bird perch on a branch of a tree
+\xn
+\sn 3
+\se cpq
+\le
+\ph cap1
+\ps v.
+\de contact ( an illness or disease ) through infection or congion ( both contagious or infectious )
+\ge contaminate
+\pl Aanacpqtuwq
+\pd a1 nA1 cap1 to2
+\pde be contaminate by disease
+\pdn
+\dn
+\rf
+\xv xjwtqcpqma
+\xr khai3 wat1 cap1 mA2
+\xe catch by cold
+\xn
+\sn 4
+\se cpq
+\le
+\ph cap1
+\ps v.
+\de a word that a person speak often as some words while speaking
+\ge person speak often
+\pl cpqsupq
+\pd cap1 sop1
+\pde a word that a person speak often as some words while speaking
+\pl
+\pd
+\pde
+\pdn
+\dn
+\rf
+\xv xoMmanIcpqsoupq
+\xr khAm2 mA5 nI6 cap1 sop1
+\xe obsecence or slang words is used very frequently lit. obsecence word
+is stick to his mouth
+\xn
+\sn 4
+\se cpq
+\le
+\ph cap1
+\ps v.
+\de atrract someone's or something's attraction as catch the eye
+\ge attract
+\pl cpqcE
+\pd cap1 cav2
+\pde be infatuated with, have intense passion for
+\pdn
+\dn
+\rf
+\xv cpqta
+\xr cap1 tA2
+\xe appealing, eye catching, attractive, striking,  immediately appealing or noticiable,
+ easily seen or noticed, lit. attract the eye
+\xn
+\sn 5
+\se cpq
+\le
+\ph cap1
+\ps v.
+\de ( of children ) stay close all along, attach to, as to be so fond of and liking for someone
+so as unwilling or hesitant to stay away from, attach to
+\ge stay close all along
+\pl
+\pd
+\pde
+\pdn
+\dn
+\rf
+\xv cpqcoMAUmJnqkaka
+\xr cap1 cqm2 U3 mvn2 kA1 kA1
+\xe follow his father
+\xv lukqnjcpqAUmJnq
+\xr luk4 nai4 cap4 U3 mvn2
+\xe this child is willing to stay close all along with his father
+\xn
+\sn 6
+\se cpq
+\le
+\ph cap1
+\ps v.
+\de incur
+\ge incur
+\pl cpqnI
+\pd cap1 nI3
+\pde incur debt
+\pdn
+\dn
+\rf
+\xv
+\xr
+\xe
+\xn
+\sn 7
+\se cpq
+\le
+\ph cap1
+\ps v
+\de to kindle or become ignited and start burning as fire
+\ge kindle
+\pl cpqsImI
+\pd cap1 si1 mI2
+\pde to illuminate candle
+\pdn
+\dn
+\rf
+\xv cpqfj
+\xr cap1 phai2
+\xe to light up a fire
+\xn
+\se cpqmnqAigq
+\le
+\ph cap1 man1 iN1
+\ps v
+\de to light up a lamp
+\ge light.up.lamp
+\pl
+\pd
+\pde
+\pdn
+\dn
+\rf
+\xv
+\xr
+\xe
+\xn
+\notes ailot
+\dt 27/Aug/2016
+
+\lx kkq
+\le
+\ph kAk1
+\so phk_kaak1.wav
+\hm 2
+\ps n.
+\sn 1
+\de bamboo or wooden spoon
+\ge spoon
+\pl
+\pd
+\pde
+\pdn
+\dn
+\rf
+\xv
+\xr
+\xe
+\xn
+\se kkqgF
+\le
+\ph kAk1 Njm5
+\so phk_kaak1Njm5.wav
+\ps n.
+\de a pronged bamboo or wooden spoon
+\ge pronged bamboo or wooden spoon
+\pl
+\pd
+\pde
+\pdn
+\dn
+\rf
+\xv
+\xr
+\xe
+\xn
+\se kkqxutqxW
+\le kkqxo utqxW
+\ph kAk1 khot4 khau3
+\so phk_kaak1khot4khau3.wav
+\ps n.
+\de a wooden spoon or ladle for serving food
+\ge wooden spoon ( photo )
+\pl
+\pd
+\pde
+\pdn
+\dn
+\rf
+\xv
+\xr
+\xe
+\xn
+\se kkqpnq
+\le
+\ph kAk1 pan1
+\so phk_kaak1pan1.wav
+\ps n.
+\de a swirling spoon, a kind of stick used in cooking to stir curry, used, for example, to thin out the lentils while making dal
+\ge swirling.spoon
+\pc1 1_phk_kAk1pan1.jpg
+\pc2 2_phk_kAk1pan1.jpg
+\pc3 3_phk_kAk1pan1.jpg
+\pl
+\pd
+\pde
+\pdn
+\dn
+\rf
+\xv
+\xr
+\xe
+\xn
+\notes ailot
+\dt 07/Apr/2016
+
+\lx kkq
+\le
+\ph kak1
+\so phk_kak1.wav
+\hm 5
+\ps v.
+\sn 1
+\de stammer, speak with sudden unwanted pauses and tendency to repeat the first letters of  words
+\ge stammer
+\pl linqkkq
+\pd lin4 kak1
+\so phk_lin4kak1.wav
+\pde stammer
+\pdn
+\dn
+\rf
+\xv mJnqkunqlinqkkq
+\xr mvn2 kon2 lin4 kak1
+\so phk_mvn2kon2lin4kak1.wav
+\xe he is a stammerer
+\xn
+\se kkDkaa
+\le kkqkkqkaka
+\ph kak1 kak1 kA2 kA2
+\so phk_kak1kak1kaa2kaa2.wav
+\ps express.
+\de to stammer extremely, to have many stammers or unwanted pauses in one's speech
+\ge extreme.stammer
+\pl
+\pd
+\pde
+\pdn
+\dn
+\rf
+\xv
+\xr
+\xe
+\xn
+\notes ailot
+\dt 07/Apr/2016
+
+\lx blank
