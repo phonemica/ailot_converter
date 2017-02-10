@@ -1,15 +1,26 @@
 #! /usr/bin/env node
 
-console.log();
 const fs = require('fs');
 const path = require('path');
 const thisPath = console.log(path.dirname(__filename));
 const clear = require('clear');
 const chalk = require('chalk');
 const timestamp = require('unix-timestamp');
+const uuid = require('uuid/v1');
 
 const language = 'Phake';
+const editor = 'ailot';
+const un = editor;
+const pw = require('./auth.js');
 
+/* CouchDB */
+const PouchDB = require('pouchdb');
+PouchDB.plugin(require('pouchdb-authentication'));
+var remoteDB = new PouchDB('http://' + un + ':' + pw + '@phonemica.net:5984/' + language.toLowerCase());
+let insert = false;
+// http://ailot:E1c59Z5uO09F1pH@phonemica.net:5984/_utils/fauxton/
+
+/* everything else */
 var progress = require('cli-progress');
 var progressBar = new progress.Bar({
 	barCompleteChar: '█',
@@ -23,14 +34,19 @@ var progressBar = new progress.Bar({
 /* Load the Toolbox file */
 const sourceFile = './source.txt';
 const sourceData = fs.readFileSync(sourceFile).toString().split("\n");
-var fullArray = [];
+
 clear();
+
+var fullArray = [];
 var tempEntry = {};
 var fieldData = require('./fields');
 console.log(chalk.green.bold('Ailot Dictionary Converter'));
 console.log(chalk.green('(c)2016–2017 Phonemica'));
 console.log("");
 findSource(sourceFile);
+
+// de-Banchob-ify the phonemic script, e.g. <N> converts to <ŋ>
+var banchob = require('./phake.js');
 
 function ksort(obj) {
 	var keys = Object.keys(obj).sort(),
@@ -61,15 +77,48 @@ function createArrays(limit) {
 					if (Object.keys(tempEntry).length != 0 && tempEntry.constructor === Object) {
 						// Doing this line by line instead of iterating so it doesn't mess up an array somewhere else
 						tempEntry['gloss'] = ksort(tempEntry['gloss']);
-						tempEntry['example'] = ksort(tempEntry['example']);
-						tempEntry['definition'] = ksort(tempEntry['definition']);
-						tempEntry['phonemic'] = ksort(tempEntry['phonemic']);
-						fullArray.push(ksort(tempEntry));
+						tempEntry['pos'] = [(tempEntry['pos'] + ".").replace(/\.\./g, ".")];
+
+						let examples = [];
+						for (let v = 0; v < tempEntry['example']['english'].length; v++) {
+
+							examples[v] = {
+								'english': tempEntry['example']['english'][v],
+								'phonemic': banchob(tempEntry['example']['phonemic'][v]),
+								'script': tempEntry['example']['script'][v],
+							}
+						}
+						tempEntry['sense'] = [{
+							'gloss': tempEntry['gloss'],
+							'definition': tempEntry['definition'],
+							'pos': tempEntry['pos'],
+							'example': examples
+						}];
+
+						delete tempEntry['gloss'];
+						delete tempEntry['pos'];
+						delete tempEntry['definition'];
+						delete tempEntry['example'];
+
+						tempEntry['notes'] = "";
+
+						tempEntry['derivatives'] = [];
+						tempEntry['editor'] = editor;
+
+						for (let c = 0; c < tempEntry['sense'].length; c++) {
+							tempEntry['sense'][c] = ksort(tempEntry['sense'][c]);
+						}
+						tempEntry = ksort(tempEntry);
+						fullArray.push(tempEntry);
+						if (insert == true) {
+							remoteDB.put(tempEntry);
+						}
 					}
 					tempEntry = {};
-					tempEntry['image'] = [];
-					tempEntry['gloss'] = {}
-					tempEntry['phonemic'] = {};
+					tempEntry._id = uuid();
+					tempEntry.image = [];
+					tempEntry.gloss = {}
+					tempEntry.sense = [];
 				}
 				if (field in fieldData) {
 					var fieldName = fieldData[field];
@@ -85,6 +134,11 @@ function createArrays(limit) {
 							if ("\\" + field != fieldValue) {
 								if (parentField == 'gloss') {
 									tempEntry[parentField][childField] = fieldValue;
+								} else if (parentField == 'definition') {
+									tempEntry[parentField] = [];
+									tempEntry[parentField].push({
+										'english': fieldValue
+									});
 								} else {
 									tempEntry[parentField][childField] = [fieldValue];
 								}
@@ -101,17 +155,11 @@ function createArrays(limit) {
 									tempEntry[fieldName]["date"] = fieldValue;
 									tempEntry[fieldName]["unix"] = timestamp.fromDate(fieldValue);
 								} else if (fieldName == 'phonemic') {
-									tempEntry['phonemic'][language.toLowerCase()] = fieldValue;
+									tempEntry['phonemic'] = banchob(fieldValue);
 								} else if (fieldName == 'subentry' || fieldName == 'lexeme') {
 									tempEntry['lexeme'] = fieldValue; // remove later
-									tempEntry['gloss'][language.toLowerCase()] = fieldValue;
 								} else if (fieldName == 'image') {
 									tempEntry['image'].push(fieldValue);
-								} else if (fieldName == 'sense') {
-									tempEntry['sense'] = parseInt(fieldValue);
-								} else if (fieldName == 'pos') {
-									fieldValue = (fieldValue + '.').replace(/\.\./g, '.');
-									tempEntry[fieldName] = [fieldValue];
 								} else {
 									tempEntry[fieldName] = fieldValue;
 								}
@@ -127,7 +175,7 @@ function createArrays(limit) {
 	progressBar.stop();
 	console.log("");
 	console.log(chalk.green.bold('Sample output:'));
-	console.log(JSON.stringify(fullArray[0], null, 2));
+	console.log(JSON.stringify(fullArray[0]));
 	saveJSON(fullArray);
 }
 
