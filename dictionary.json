@@ -1,0 +1,445 @@
+[
+  {
+    "definition": {
+      "english": [
+        "to adhere, join, stick firmly to"
+      ]
+    },
+    "example": {
+      "english": [
+        "the paper stick to each other"
+      ],
+      "phonemic": [
+        "cE3 nj4 cap1 kA1"
+      ],
+      "script": [
+        "ecencpqka"
+      ]
+    },
+    "gloss": {
+      "english": "stick firmly to",
+      "phake": "cpq"
+    },
+    "image": [],
+    "lexeme": "cpq",
+    "phonemic": {
+      "phake": "cap1"
+    },
+    "pos": [
+      "v."
+    ],
+    "sense": 2
+  },
+  {
+    "definition": {
+      "english": [
+        "( of birds ) perch, sit, rest as a bird on a tree"
+      ]
+    },
+    "example": {
+      "english": [
+        "a bird perch on a branch of a tree"
+      ],
+      "phonemic": [
+        "nok4 cap1 tI5 khA4 mai4"
+      ],
+      "script": [
+        "nukqtuwqnJgqcpqsUtIxamj"
+      ]
+    },
+    "gloss": {
+      "english": "perch",
+      "phake": "cpq"
+    },
+    "image": [],
+    "lexeme": "cpq",
+    "phonemic": {
+      "phake": "cap1"
+    },
+    "pos": [
+      "v."
+    ],
+    "sense": 3
+  },
+  {
+    "definition": {
+      "english": [
+        "contact ( an illness or disease ) through infection or congion ( both contagious or infectious )"
+      ]
+    },
+    "example": {
+      "english": [
+        "catch by cold"
+      ],
+      "phonemic": [
+        "khai3 wat1 cap1 mA2"
+      ],
+      "script": [
+        "xjwtqcpqma"
+      ]
+    },
+    "gloss": {
+      "english": "contaminate",
+      "phake": "cpq"
+    },
+    "image": [],
+    "lexeme": "cpq",
+    "phonemic": {
+      "phake": "cap1"
+    },
+    "pos": [
+      "v."
+    ],
+    "sense": 4
+  },
+  {
+    "definition": {
+      "english": [
+        "a word that a person speak often as some words while speaking"
+      ]
+    },
+    "example": {
+      "english": [
+        "obsecence or slang words is used very frequently lit. obsecence word"
+      ],
+      "phonemic": [
+        "khAm2 mA5 nI6 cap1 sop1"
+      ],
+      "script": [
+        "xoMmanIcpqsoupq"
+      ]
+    },
+    "gloss": {
+      "english": "person speak often",
+      "phake": "cpq"
+    },
+    "image": [],
+    "lexeme": "cpq",
+    "phonemic": {
+      "phake": "cap1"
+    },
+    "pos": [
+      "v."
+    ],
+    "sense": 4
+  },
+  {
+    "definition": {
+      "english": [
+        "atrract someone's or something's attraction as catch the eye"
+      ]
+    },
+    "example": {
+      "english": [
+        "appealing, eye catching, attractive, striking,  immediately appealing or noticiable,"
+      ],
+      "phonemic": [
+        "cap1 tA2"
+      ],
+      "script": [
+        "cpqta"
+      ]
+    },
+    "gloss": {
+      "english": "attract",
+      "phake": "cpq"
+    },
+    "image": [],
+    "lexeme": "cpq",
+    "phonemic": {
+      "phake": "cap1"
+    },
+    "pos": [
+      "v."
+    ],
+    "sense": 5
+  },
+  {
+    "definition": {
+      "english": [
+        "( of children ) stay close all along, attach to, as to be so fond of and liking for someone"
+      ]
+    },
+    "example": {
+      "english": [
+        "this child is willing to stay close all along with his father"
+      ],
+      "phonemic": [
+        "luk4 nai4 cap4 U3 mvn2"
+      ],
+      "script": [
+        "lukqnjcpqAUmJnq"
+      ]
+    },
+    "gloss": {
+      "english": "stay close all along",
+      "phake": "cpq"
+    },
+    "image": [],
+    "lexeme": "cpq",
+    "phonemic": {
+      "phake": "cap1"
+    },
+    "pos": [
+      "v."
+    ],
+    "sense": 6,
+    "sound": "as unwilling or hesitant to stay away from, attach to"
+  },
+  {
+    "definition": {
+      "english": [
+        "incur"
+      ]
+    },
+    "example": {
+      "english": [],
+      "phonemic": [],
+      "script": []
+    },
+    "gloss": {
+      "english": "incur",
+      "phake": "cpq"
+    },
+    "image": [],
+    "lexeme": "cpq",
+    "phonemic": {
+      "phake": "cap1"
+    },
+    "pos": [
+      "v."
+    ],
+    "sense": 7
+  },
+  {
+    "definition": {
+      "english": [
+        "to kindle or become ignited and start burning as fire"
+      ]
+    },
+    "example": {
+      "english": [
+        "to light up a fire"
+      ],
+      "phonemic": [
+        "cap1 phai2"
+      ],
+      "script": [
+        "cpqfj"
+      ]
+    },
+    "gloss": {
+      "english": "kindle",
+      "phake": "cpq"
+    },
+    "image": [],
+    "lexeme": "cpq",
+    "phonemic": {
+      "phake": "cap1"
+    },
+    "pos": [
+      "v."
+    ]
+  },
+  {
+    "date": {
+      "date": "27/Aug/2016",
+      "unix": 1472236200
+    },
+    "definition": {
+      "english": [
+        "to light up a lamp"
+      ]
+    },
+    "example": {
+      "english": [],
+      "phonemic": [],
+      "script": []
+    },
+    "gloss": {
+      "english": "light.up.lamp",
+      "phake": "cpqmnqAigq"
+    },
+    "image": [],
+    "lexeme": "cpqmnqAigq",
+    "notes": "ailot",
+    "phonemic": {
+      "phake": "cap1 man1 iN1"
+    },
+    "pos": [
+      "v."
+    ]
+  },
+  {
+    "definition": {
+      "english": [
+        "bamboo or wooden spoon"
+      ]
+    },
+    "example": {
+      "english": [],
+      "phonemic": [],
+      "script": []
+    },
+    "gloss": {
+      "english": "spoon",
+      "phake": "kkq"
+    },
+    "image": [],
+    "lexeme": "kkq",
+    "phonemic": {
+      "phake": "kAk1"
+    },
+    "pos": [
+      "n."
+    ],
+    "sense": 1,
+    "sound": "phk_kaak1.wav"
+  },
+  {
+    "definition": {
+      "english": [
+        "a pronged bamboo or wooden spoon"
+      ]
+    },
+    "example": {
+      "english": [],
+      "phonemic": [],
+      "script": []
+    },
+    "gloss": {
+      "english": "pronged bamboo or wooden spoon",
+      "phake": "kkqgF"
+    },
+    "image": [],
+    "lexeme": "kkqgF",
+    "phonemic": {
+      "phake": "kAk1 Njm5"
+    },
+    "pos": [
+      "n."
+    ],
+    "sound": "phk_kaak1Njm5.wav"
+  },
+  {
+    "definition": {
+      "english": [
+        "a wooden spoon or ladle for serving food"
+      ]
+    },
+    "example": {
+      "english": [],
+      "phonemic": [],
+      "script": []
+    },
+    "gloss": {
+      "english": "wooden spoon ( photo )",
+      "phake": "kkqxutqxW"
+    },
+    "image": [],
+    "lexeme": "kkqxutqxW",
+    "phonemic": {
+      "phake": "kAk1 khot4 khau3"
+    },
+    "pos": [
+      "n."
+    ],
+    "sound": "phk_kaak1khot4khau3.wav"
+  },
+  {
+    "date": {
+      "date": "07/Apr/2016",
+      "unix": 1459967400
+    },
+    "definition": {
+      "english": [
+        "a swirling spoon, a kind of stick used in cooking to stir curry, used, for example, to thin out the lentils while making dal"
+      ]
+    },
+    "example": {
+      "english": [],
+      "phonemic": [],
+      "script": []
+    },
+    "gloss": {
+      "english": "swirling.spoon",
+      "phake": "kkqpnq"
+    },
+    "image": [
+      "1_phk_kAk1pan1.jpg",
+      "2_phk_kAk1pan1.jpg",
+      "3_phk_kAk1pan1.jpg"
+    ],
+    "lexeme": "kkqpnq",
+    "notes": "ailot",
+    "phonemic": {
+      "phake": "kAk1 pan1"
+    },
+    "pos": [
+      "n."
+    ],
+    "sound": "phk_kaak1pan1.wav"
+  },
+  {
+    "definition": {
+      "english": [
+        "stammer, speak with sudden unwanted pauses and tendency to repeat the first letters of  words"
+      ]
+    },
+    "example": {
+      "english": [
+        "he is a stammerer"
+      ],
+      "phonemic": [
+        "mvn2 kon2 lin4 kak1"
+      ],
+      "script": [
+        "mJnqkunqlinqkkq"
+      ]
+    },
+    "gloss": {
+      "english": "stammer",
+      "phake": "kkq"
+    },
+    "image": [],
+    "lexeme": "kkq",
+    "phonemic": {
+      "phake": "kak1"
+    },
+    "pos": [
+      "v."
+    ],
+    "sense": 1,
+    "sound": "phk_mvn2kon2lin4kak1.wav"
+  },
+  {
+    "date": {
+      "date": "07/Apr/2016",
+      "unix": 1459967400
+    },
+    "definition": {
+      "english": [
+        "to stammer extremely, to have many stammers or unwanted pauses in one's speech"
+      ]
+    },
+    "example": {
+      "english": [],
+      "phonemic": [],
+      "script": []
+    },
+    "gloss": {
+      "english": "extreme.stammer",
+      "phake": "kkDkaa"
+    },
+    "image": [],
+    "lexeme": "kkDkaa",
+    "notes": "ailot",
+    "phonemic": {
+      "phake": "kak1 kak1 kA2 kA2"
+    },
+    "pos": [
+      "express."
+    ],
+    "sound": "phk_kak1kak1kaa2kaa2.wav"
+  }
+]
