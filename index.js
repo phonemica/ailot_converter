@@ -17,7 +17,7 @@ const pw = require('./auth.js');
 const PouchDB = require('pouchdb');
 PouchDB.plugin(require('pouchdb-authentication'));
 var remoteDB = new PouchDB('http://' + un + ':' + pw + '@phonemica.net:5984/' + language.toLowerCase());
-let insert = false;
+let insert = true;
 // http://ailot:E1c59Z5uO09F1pH@phonemica.net:5984/_utils/fauxton/
 
 /* everything else */
@@ -46,7 +46,7 @@ console.log("");
 findSource(sourceFile);
 
 // de-Banchob-ify the phonemic script, e.g. <N> converts to <ŋ>
-var banchob = require('./phake.js');
+var banchob = require('./banchob.js');
 
 function ksort(obj) {
 	var keys = Object.keys(obj).sort(),
