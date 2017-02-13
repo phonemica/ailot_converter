@@ -18,7 +18,6 @@ const PouchDB = require('pouchdb');
 PouchDB.plugin(require('pouchdb-authentication'));
 var remoteDB = new PouchDB('http://' + un + ':' + pw + '@phonemica.net:5984/' + language.toLowerCase());
 let insert = true;
-// http://ailot:E1c59Z5uO09F1pH@phonemica.net:5984/_utils/fauxton/
 
 /* everything else */
 var progress = require('cli-progress');
@@ -33,7 +32,7 @@ var progressBar = new progress.Bar({
 
 /* Load the Toolbox file */
 const sourceFile = './source.txt';
-const sourceData = fs.readFileSync(sourceFile).toString().split("\n");
+let sourceData = fs.readFileSync(sourceFile).toString().split("\n");
 
 clear();
 
@@ -48,16 +47,48 @@ findSource(sourceFile);
 // de-Banchob-ify the phonemic script, e.g. <N> converts to <ŋ>
 var banchob = require('./banchob.js');
 
-function ksort(obj) {
-	var keys = Object.keys(obj).sort(),
-		sortedObj = {};
-	for (var i in keys) {
-		sortedObj[keys[i]] = obj[keys[i]];
+function ksort(object) {
+	var keys = Object.keys(object).sort(),
+		sorted = {};
+	for (let i in keys) {
+		sorted[keys[i]] = object[keys[i]];
 	}
-	return sortedObj;
+	return sorted;
+}
+
+function cleanIndicies(input) {
+	let output = [];
+	input.map(function(item) {
+		output.push(item);
+	})
+	return output;
+}
+
+function fixBreaks(input) {
+	let holder;
+	let output = []
+	console.log(chalk.red('Fixing line breaks...'));
+	for (i in input) {
+		if (input[i][0] != '\\' ) {
+			if ((input[i].substring(0, 2) == "\\_" && i < 5) || input[i].trim() == '') {
+				// skip
+			} else {
+				let e = i-1;
+				output[e] = '' + output[e].replace(/[^\x00-\xFF]/g, "").toString().trim() + " " + input[i].replace(/[^\x00-\xFF]/g, "").toString().trim();
+				//console.log(output[e]);
+			}
+		} else {
+			input[i] = input[i].replace("( ","(").replace(" )",")");
+			output[i] = input[i];
+		}
+	}
+	console.log(chalk.red('Fixed.'));
+	console.log("");
+	return cleanIndicies(output);
 }
 
 function createArrays(limit) {
+	sourceData = fixBreaks(sourceData);
 	progressBar.start(limit, 0);
 	var fieldSets = null,
 		parentField = null,
@@ -70,9 +101,10 @@ function createArrays(limit) {
 			} else if (sourceData[i].trim() == '') {
 				// ignore blank lines
 			} else {
-				var e = sourceData[i].indexOf(' ');
-				var arrays = [sourceData[i].slice(0, e), sourceData[i].slice(e + 1)];
-				var field = arrays[0].replace(/\\/g, "").replace(/\r/g, "");
+				let e = sourceData[i].indexOf(' ');
+				let arrays = [sourceData[i].slice(0, e), sourceData[i].slice(e + 1)];
+				let field = arrays[0];
+					field = field.replace(/\\/g, "").replace(/\r/g, "");
 				if (field == "lx" || field == "se") {
 					if (Object.keys(tempEntry).length != 0 && tempEntry.constructor === Object) {
 						// Doing this line by line instead of iterating so it doesn't mess up an array somewhere else
@@ -80,14 +112,17 @@ function createArrays(limit) {
 						tempEntry['pos'] = [(tempEntry['pos'] + ".").replace(/\.\./g, ".")];
 
 						let examples = [];
-						for (let v = 0; v < tempEntry['example']['english'].length; v++) {
+						if (tempEntry['example'] != null && tempEntry['example']['english'] != null) {
+							for (let v = 0; v < tempEntry['example']['english'].length; v++) {
 
-							examples[v] = {
-								'english': tempEntry['example']['english'][v],
-								'phonemic': banchob(tempEntry['example']['phonemic'][v]),
-								'script': tempEntry['example']['script'][v],
+								examples[v] = {
+									'english': tempEntry['example']['english'][v],
+									'phonemic': banchob(tempEntry['example']['phonemic'][v]),
+									'script': tempEntry['example']['script'][v],
+								}
 							}
 						}
+
 						tempEntry['sense'] = [{
 							'gloss': tempEntry['gloss'],
 							'definition': tempEntry['definition'],
@@ -174,6 +209,8 @@ function createArrays(limit) {
 	}
 	progressBar.stop();
 	console.log("");
+	console.log(chalk.yellow('Done!'));
+	console.log("");
 	console.log(chalk.green.bold('Sample output:'));
 	console.log(JSON.stringify(fullArray[0]));
 	saveJSON(fullArray);
@@ -188,7 +225,6 @@ function saveJSON(fullArray) {
 			console.log(chalk.red.bold('Error: ' + err));
 		} else {
 			console.log(chalk.green.bold('File saved'));
-			console.log(chalk.yellow.bold('Done!'));
 			console.log("");
 		}
 	});
